@@ -1,0 +1,7 @@
+Flask==2.0.1
+pyodbc
+gunicorn
+flash
+azure-keyvault
+azure-keyvault-secrets
+azure-identity

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Poll</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #B2E4DB; /* pastel blue-green */
+            margin: 40px auto;
+            max-width: 600px;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .alert {
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+    </style>
+</head>
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+    <h1>Welcome to our Poll!</h1>
+
+<form action="/submit" method="post">
+
+    <div class="question">
+        <p>What is your favorite wild feline?</p>
+        <input type="radio" name="feline" value="lion" id="lion"><label for="lion">Lion</label><br>
+        <input type="radio" name="feline" value="tiger" id="tiger"><label for="tiger">Tiger</label><br>
+        <input type="radio" name="feline" value="leopard" id="leopard"><label for="leopard">Leopard</label><br>
+        <input type="radio" name="feline" value="cheetah" id="cheetah"><label for="cheetah">Cheetah</label>
+    </div>
+
+    <div class="question">
+        <p>Where is your dream vacation?</p>
+        <input type="radio" name="vacation" value="peru" id="peru"><label for="peru">Peru</label><br>
+        <input type="radio" name="vacation" value="nepal" id="nepal"><label for="nepal">Nepal</label><br>
+        <input type="radio" name="vacation" value="maldives" id="maldives"><label for="maldives">Maldives</label><br>
+        <input type="radio" name="vacation" value="fiji" id="fiji"><label for="fiji">Fiji</label>
+    </div>
+
+    <div class="question">
+        <p>What type of music do you like?</p>
+        <input type="radio" name="music" value="jazz" id="jazz"><label for="jazz">Jazz</label><br>
+        <input type="radio" name="music" value="rock" id="rock"><label for="rock">Rock</label><br>
+        <input type="radio" name="music" value="pop" id="pop"><label for="pop">Pop</label><br>
+        <input type="radio" name="music" value="classical" id="classical"><label for="classical">Classical</label>
+    </div>
+
+    <div class="question">
+        <p>How do you prefer to move?</p>
+        <input type="radio" name="movement" value="transport" id="transport"><label for="transport">Public Transport</label><br>
+        <input type="radio" name="movement" value="car" id="car"><label for="car">Car</label><br>
+        <input type="radio" name="movement" value="bike" id="bike"><label for="bike">Bike</label><br>
+        <input type="radio" name="movement" value="foot" id="foot"><label for="foot">On Foot</label>
+    </div>
+
+    <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
